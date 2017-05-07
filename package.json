@@ -1,6 +1,6 @@
 {
   "name": "immutably-array",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Non-mutating operations on arrays (immutably extension).",
   "author": "Grzegorz Wasiak (ennovum)",
   "keywords": ["immutably", "immutable", "immutability", "set", "merge", "data", "structure", "array", "state", "redux", "reducer", "mutation", "mutating"],
