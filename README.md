@@ -78,6 +78,63 @@ output; // {foo: {bar: {baz: ['a', 'b']}}}
 
 You can find more examples in the test files.
 
+### `unshift`
+
+Immutably unshiftes (is that even a word?) the given values to the respective part of the input data structure.
+
+```
+output = immutably.array.unshift(input, path, ...values);
+```
+
+**Arguments**
+
+* `input` *(any)* input data structure.
+* `path` *(string)* input data structure path to the array to push the values to.
+* `values` *(function)* a sequence of values that is to be pushed to the input array.
+
+**Returns**
+
+* `output` *(any)* output data structure with the given new values unshifted to the array on the given path.
+
+**Examples**
+
+Basic use:
+```
+const input = {foo: {bar: {baz: ['a']}}};
+const output = immutably.array.unshift(input, 'foo.bar.baz', 'b', 'c');
+output; // {foo: {bar: {baz: ['b', 'c', 'a']}}}
+```
+
+You can find more examples in the test files.
+
+### `shift`
+
+Immutably shifts a value from the respective part of the input data structure.
+
+```
+output = immutably.array.shift(input, path);
+```
+
+**Arguments**
+
+* `input` *(any)* input data structure.
+* `path` *(string)* input data structure path to the array to pop a values from.
+
+**Returns**
+
+* `output` *(any)* output data structure without a value shifted from the array on the given path.
+
+**Examples**
+
+Basic use:
+```
+const input = {foo: {bar: {baz: ['a', 'b', 'c']}}};
+const output = immutably.array.shift(input, 'foo.bar.baz');
+output; // {foo: {bar: {baz: ['b', 'c']}}}
+```
+
+You can find more examples in the test files.
+
 ## Changelog
 
 **1.0.0**
