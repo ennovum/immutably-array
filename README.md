@@ -23,7 +23,7 @@ immutably.array; // embedded immutably-array
 
 ### `push`
 
-Immutably pushes the given values to the respective part of the input data structure.
+Immutably pushes the given values to the array in the respective part of the input data structure.
 
 ```
 output = immutably.array.push(input, path, ...values);
@@ -52,7 +52,7 @@ You can find more examples in the test files.
 
 ### `pop`
 
-Immutably pops a value from the respective part of the input data structure.
+Immutably pops a value from the array in the respective part of the input data structure.
 
 ```
 output = immutably.array.pop(input, path);
@@ -80,7 +80,7 @@ You can find more examples in the test files.
 
 ### `unshift`
 
-Immutably unshiftes (is that even a word?) the given values to the respective part of the input data structure.
+Immutably inserts the given values to the beginning of the array in the respective part of the input data structure.
 
 ```
 output = immutably.array.unshift(input, path, ...values);
@@ -109,7 +109,7 @@ You can find more examples in the test files.
 
 ### `shift`
 
-Immutably shifts a value from the respective part of the input data structure.
+Immutably removes a value from the beginning of the array in the respective part of the input data structure.
 
 ```
 output = immutably.array.shift(input, path);
@@ -144,10 +144,10 @@ You can find more examples in the test files.
 
 ## Roadmap
 
-* **shift**, **unshift**
-* **concat**, **splice**
-* **map**, **reduce**
-* **filter**, **sort**
+* **fill**
+* **reverse**
+* **sort**
+* **splice**
 
 ## Develop
 
