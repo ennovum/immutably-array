@@ -15,17 +15,6 @@ test('immutably / pop / pop from an empty array', (testCase) => {
     testCase.doesNotThrow(testScenario1);
 
     const testScenario2 = () => {
-        const input = [];
-        const resultOutput = pop(input, null);
-        const expectedOutput = [];
-
-        testCase.deepEqual(resultOutput, expectedOutput);
-        testCase.notEqual(input, resultOutput);
-    };
-
-    testCase.doesNotThrow(testScenario2);
-
-    const testScenario3 = () => {
         const input = {foo: []};
         const resultOutput = pop(input, 'foo');
         const expectedOutput = {foo: []};
@@ -34,7 +23,7 @@ test('immutably / pop / pop from an empty array', (testCase) => {
         testCase.notEqual(input, resultOutput);
     };
 
-    testCase.doesNotThrow(testScenario3);
+    testCase.doesNotThrow(testScenario2);
 
     testCase.end();
 });
