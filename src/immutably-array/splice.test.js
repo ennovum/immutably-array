@@ -175,3 +175,43 @@ test('immutably-array / splice / removing elements from and pushing elements to 
 
     testCase.end();
 });
+
+test('immutably-array / splice / removing elements from an array and pushing them back with splice', (testCase) => {
+    testCase.doesNotThrow(() => {
+        const input = ['foo'];
+        const resultOutput = splice(input, null, 0, 1, 'foo');
+        const expectedOutput = ['foo'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.equal(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = splice(input, null, 0, 1, 'foo');
+        const expectedOutput = ['foo', 'bar', 'baz'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.equal(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = splice(input, null, 2, 1, 'baz');
+        const expectedOutput = ['foo', 'bar', 'baz'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.equal(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = {foo: {bar: {baz: ['xxx']}}};
+        const resultOutput = splice(input, 'foo.bar.baz', 0, 1, 'xxx');
+        const expectedOutput = {foo: {bar: {baz: ['xxx']}}};
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.equal(input, resultOutput);
+    });
+
+    testCase.end();
+});

@@ -7,6 +7,7 @@ function splice(input, path, startIndex, deleteCount, ...insertList) {
         const output = immutably.clone(input);
         output.splice(startIndex, deleteCount, ...insertList);
         
+        if (output.length === input.length) return immutably.merge(input, null, output);
         return output;
     });
 }
