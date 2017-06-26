@@ -137,6 +137,11 @@ You can find more examples in the test files.
 
 ## Changelog
 
+**1.1.0**
+
+* `immutably.array.shift` implemented & unit tested
+* `immutably.array.unshift` implemented & unit tested
+
 **1.0.0**
 
 * `immutably.array.push` implemented & unit tested
