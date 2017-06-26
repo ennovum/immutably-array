@@ -144,10 +144,13 @@ You can find more examples in the test files.
 
 ## Roadmap
 
-* **fill**
+* **splice**
+* **map**
+* **reduce**
+* **filter**
 * **reverse**
 * **sort**
-* **splice**
+* **fill**
 
 ## Develop
 
