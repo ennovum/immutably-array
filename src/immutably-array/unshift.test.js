@@ -2,8 +2,8 @@ import test from 'tape';
 
 import {unshift} from './unshift';
 
-test('immutably / unshift / unshift to an empty array', (testCase) => {
-    const testScenario1 = () => {
+test('immutably-array / unshift / unshift to an empty array', (testCase) => {
+    testCase.doesNotThrow(() => {
         const input = [];
         const value = 'foo';
         const resultOutput = unshift(input, null, value);
@@ -11,11 +11,9 @@ test('immutably / unshift / unshift to an empty array', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
-    };
+    });
 
-    testCase.doesNotThrow(testScenario1);
-
-    const testScenario2 = () => {
+    testCase.doesNotThrow(() => {
         const input = [];
         const values = ['foo', 'bar'];
         const resultOutput = unshift(input, null, ...values);
@@ -23,11 +21,9 @@ test('immutably / unshift / unshift to an empty array', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
-    };
+    });
 
-    testCase.doesNotThrow(testScenario2);
-
-    const testScenario3 = () => {
+    testCase.doesNotThrow(() => {
         const input = {foo: []};
         const value = 'bar';
         const resultOutput = unshift(input, 'foo', value);
@@ -35,15 +31,13 @@ test('immutably / unshift / unshift to an empty array', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
-    };
-
-    testCase.doesNotThrow(testScenario3);
+    });
 
     testCase.end();
 });
 
-test('immutably / unshift / unshift to a not empty array', (testCase) => {
-    const testScenario1 = () => {
+test('immutably-array / unshift / unshift to a not empty array', (testCase) => {
+    testCase.doesNotThrow(() => {
         const input = ['foo'];
         const value = 'bar';
         const resultOutput = unshift(input, null, value);
@@ -51,11 +45,9 @@ test('immutably / unshift / unshift to a not empty array', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
-    };
+    });
 
-    testCase.doesNotThrow(testScenario1);
-
-    const testScenario2 = () => {
+    testCase.doesNotThrow(() => {
         const input = ['foo'];
         const values = ['bar', 'baz'];
         const resultOutput = unshift(input, null, ...values);
@@ -63,11 +55,9 @@ test('immutably / unshift / unshift to a not empty array', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
-    };
+    });
 
-    testCase.doesNotThrow(testScenario2);
-
-    const testScenario3 = () => {
+    testCase.doesNotThrow(() => {
         const input = {foo: ['bar']};
         const value = 'baz';
         const resultOutput = unshift(input, 'foo', value);
@@ -75,15 +65,13 @@ test('immutably / unshift / unshift to a not empty array', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
-    };
-
-    testCase.doesNotThrow(testScenario3);
+    });
 
     testCase.end();
 });
 
-test('immutably / unshift / empty unshift', (testCase) => {
-    const testScenario1 = () => {
+test('immutably-array / unshift / empty unshift', (testCase) => {
+    testCase.doesNotThrow(() => {
         const input = [];
         const values = [];
         const resultOutput = unshift(input, null, ...values);
@@ -91,29 +79,23 @@ test('immutably / unshift / empty unshift', (testCase) => {
 
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.equal(input, resultOutput);
-    };
-
-    testCase.doesNotThrow(testScenario1);
+    });
 
     testCase.end();
 });
 
-test('immutably / unshift / unshift to no array', (testCase) => {
-    const testScenario1 = () => {
+test('immutably-array / unshift / unshift to no array', (testCase) => {
+    testCase.throws(() => {
         const input = null;
         const value = true;
         unshift(input, null, value);
-    };
+    });
 
-    testCase.throws(testScenario1);
-
-    const testScenario2 = () => {
+    testCase.throws(() => {
         const input = {};
         const value = true;
         unshift(input, null, value);
-    };
-
-    testCase.throws(testScenario2);
+    });
 
     testCase.end();
 });
