@@ -149,7 +149,6 @@ You can find more examples in the test files.
 
 ## Roadmap
 
-* **splice**
 * **map**
 * **reduce**
 * **filter**
