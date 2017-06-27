@@ -195,7 +195,41 @@ output; // {foo: {bar: {baz: ['ax', 'bx', 'cx']}}}
 
 You can find more examples in the test files.
 
+### `move`
+
+Moves an item from one position in an array to another in the respective part of the input data structure.
+
+```
+output = immutably.array.move(input, path, fromIndex, toIndex);
+```
+
+**Arguments**
+
+* `input` *(any)* input data structure.
+* `path` *(string)* input data structure path to the array to pop a values from.
+* `fromIndex` *(number)* index in the array of item which should be moved
+* `toIndex` *(number)* index in the array where item should be moved
+
+**Returns**
+
+* `output` *(any)* output data structure with an item moved to a new index in an array on the given path.
+
+**Examples**
+
+Basic use:
+```
+const input = {foo: {bar: {baz: ['a', 'b', 'c']}}};
+const output = immutably.array.move(input, 'foo.bar.baz', 0, 1);
+output; // {foo: {bar: {baz: ['b', 'a', 'c']}}}
+```
+
+You can find more examples in the test files.
+
 ## Changelog
+
+**1.3.0**
+
+* `immutably.array.move` implemented & unit tested
 
 **1.2.0**
 
