@@ -2,7 +2,7 @@ import test from 'tape';
 
 import {move} from './move';
 
-test('immutably-array / move / move item in an empty array', (testCase) => {
+test('immutably-array / move / move value in an empty array', (testCase) => {
     testCase.doesNotThrow(() => {
         const input = [];
         const resultOutput = move(input, null, 0, 1);
@@ -15,7 +15,7 @@ test('immutably-array / move / move item in an empty array', (testCase) => {
     testCase.end();
 });
 
-test('immutably-array / move / move item in a not empty array', (testCase) => {
+test('immutably-array / move / move value in a not empty array', (testCase) => {
     testCase.doesNotThrow(() => {
         const input = ['foo', 'bar'];
         const resultOutput = move(input, null, 1, 1);
@@ -55,7 +55,21 @@ test('immutably-array / move / move item in a not empty array', (testCase) => {
     testCase.end();
 });
 
-test('immutably-array / move / move item in no array', (testCase) => {
+test('immutably-array / move / move value from or to a not existing area of the array', (testCase) => {
+    testCase.throws(() => {
+        const input = ['foo', 'bar', 'baz'];
+        move(input, null, 1, 3);
+    });
+
+    testCase.throws(() => {
+        const input = ['foo', 'bar', 'baz'];
+        move(input, null, 4, 0);
+    });
+
+    testCase.end();
+});
+
+test('immutably-array / move / move value in no array', (testCase) => {
     testCase.throws(() => {
         const input = null;
         move(input, null, 0, 1);
