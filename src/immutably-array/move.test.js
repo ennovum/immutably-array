@@ -55,15 +55,27 @@ test('immutably-array / move / move value in a not empty array', (testCase) => {
     testCase.end();
 });
 
-test('immutably-array / move / move value from or to a not existing area of the array', (testCase) => {
-    testCase.throws(() => {
+test('immutably-array / move / move value from a not existing area of an array', (testCase) => {
+    testCase.doesNotThrow(() => {
         const input = ['foo', 'bar', 'baz'];
-        move(input, null, 1, 3);
+        const resultOutput = move(input, null, 10, 1);
+        const expectedOutput = ['foo', 'bar', 'baz'];
+        
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.equal(input, resultOutput);
     });
 
-    testCase.throws(() => {
+    testCase.end();
+});
+
+test('immutably-array / move / move value to a not existing area of an array', (testCase) => {
+    testCase.doesNotThrow(() => {
         const input = ['foo', 'bar', 'baz'];
-        move(input, null, 4, 0);
+        const resultOutput = move(input, null, 1, 10);
+        const expectedOutput = ['foo', 'baz', 'bar'];
+        
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
     });
 
     testCase.end();

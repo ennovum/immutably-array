@@ -197,7 +197,7 @@ You can find more examples in the test files.
 
 ### `move`
 
-Move a value from one position in an array to another in the respective part of the input data structure.
+Move a value from one index in an array to another in the respective part of the input data structure.
 
 ```
 output = immutably.array.move(input, path, fromIndex, toIndex);
@@ -213,6 +213,10 @@ output = immutably.array.move(input, path, fromIndex, toIndex);
 **Returns**
 
 * `output` *(any)* output data structure with an item moved to a new index in an array on the given path.
+
+**Details**
+
+* Implementation of `move` relies heavily on native `Array.prototype.splice` which may be considered odd when working with indexes from outside the array. Please see the tests for examples.
 
 **Examples**
 
