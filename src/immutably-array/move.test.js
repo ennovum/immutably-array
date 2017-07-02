@@ -60,7 +60,7 @@ test('immutably-array / move / move value from a not existing area of an array',
         const input = ['foo', 'bar', 'baz'];
         const resultOutput = move(input, null, 10, 1);
         const expectedOutput = ['foo', 'bar', 'baz'];
-        
+
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.equal(input, resultOutput);
     });
@@ -73,7 +73,69 @@ test('immutably-array / move / move value to a not existing area of an array', (
         const input = ['foo', 'bar', 'baz'];
         const resultOutput = move(input, null, 1, 10);
         const expectedOutput = ['foo', 'baz', 'bar'];
-        
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
+    });
+
+    testCase.end();
+});
+
+test('immutably-array / move / move value from an index found with a function', (testCase) => {
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = move(input, null, (value) => (value === 'foo'), 2);
+        const expectedOutput = ['bar', 'baz', 'foo'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = move(input, null, (value, index) => (index === 0), 2);
+        const expectedOutput = ['bar', 'baz', 'foo'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
+    });
+
+    testCase.end();
+});
+
+test('immutably-array / move / move value to an index found with a function', (testCase) => {
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = move(input, null, 0, (value) => (value === 'baz'));
+        const expectedOutput = ['bar', 'baz', 'foo'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = move(input, null, 0, (value, index) => (index === 2));
+        const expectedOutput = ['bar', 'baz', 'foo'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = move(input, null, 0, (value, index, input, fromValue) => (value !== fromValue));
+        const expectedOutput = ['bar', 'foo', 'baz'];
+
+        testCase.deepEqual(resultOutput, expectedOutput);
+        testCase.notEqual(input, resultOutput);
+    });
+
+    testCase.doesNotThrow(() => {
+        const input = ['foo', 'bar', 'baz'];
+        const resultOutput = move(input, null, 0, (value, index, input, fromValue, fromIndex) => (index === fromIndex + 1));
+        const expectedOutput = ['bar', 'foo', 'baz'];
+
         testCase.deepEqual(resultOutput, expectedOutput);
         testCase.notEqual(input, resultOutput);
     });

@@ -200,23 +200,46 @@ You can find more examples in the test files.
 Move a value from one index in an array to another in the respective part of the input data structure.
 
 ```
-output = immutably.array.move(input, path, fromIndex, toIndex);
+output = immutably.array.move(input, path, from, to);
 ```
 
 **Arguments**
 
 * `input` *(any)* input data structure.
 * `path` *(string)* input data structure path to the array to pop a values from.
-* `fromIndex` *(number)* index in the array of item which should be moved
-* `toIndex` *(number)* index in the array where item should be moved
+* `from` *(number|function)* index / function to find index in the array of an value that should be moved
+* `to` *(number|function)* index / function to find index in the array of where a value should be moved
 
 **Returns**
 
-* `output` *(any)* output data structure with an item moved to a new index in an array on the given path.
+* `output` *(any)* output data structure with a value moved in an array on the given path.
+
+**`from` call arguments**
+
+* `value` *(any)* value from the input array
+* `index` *(number)* index of the value from the input array
+* `array` *(array)* input array
+
+**`from` call returns**
+
+* `isFrom` *(boolean)* flag deciding whether the `value`/`index` from arguments are the right ones
+
+**`to` call arguments**
+
+* `value` *(any)* value from the input array
+* `index` *(number)* index of the value from the input array
+* `array` *(array)* input array
+* `fromValue` *(any)* moving value from the input array
+* `fromIndex` *(number)* index of the moving value from the input array
+
+**`to` call returns**
+
+* `isTo` *(boolean)* flag deciding whether the `value`/`index` from arguments are the right ones
 
 **Details**
 
 * Implementation of `move` relies heavily on native `Array.prototype.splice` which may be considered odd when working with indexes from outside the array. Please see the tests for examples.
+* `from` and `to` functions are used with `Array.prototype.findIndex`. If there is no support for it in your browser, you should take care of a polyfill.
 
 **Examples**
 
@@ -225,6 +248,11 @@ Basic use:
 const input = {foo: {bar: {baz: ['a', 'b', 'c']}}};
 const output = immutably.array.move(input, 'foo.bar.baz', 0, 1);
 output; // {foo: {bar: {baz: ['b', 'a', 'c']}}}
+```
+```
+const input = {foo: {bar: {baz: ['a', 'b', 'c']}}};
+const output = immutably.array.move(input, 'foo.bar.baz', (value) => value === 'a', (value) => value === 'c');
+output; // {foo: {bar: {baz: ['c', 'b', 'a']}}}
 ```
 
 You can find more examples in the test files.
@@ -249,6 +277,7 @@ You can find more examples in the test files.
 ## Roadmap
 
 * **reduce**
+* **replace**
 * **filter**
 * **reverse**
 * **sort**
