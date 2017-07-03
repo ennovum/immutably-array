@@ -289,6 +289,11 @@ You can find more examples in the test files.
 
 ## Changelog
 
+**1.3.0**
+
+* `immutably.array.move` implemented & unit tested
+* `immutably.array.reduce` implemented & unit tested
+
 **1.2.0**
 
 * `immutably.array.map` implemented & unit tested
