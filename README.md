@@ -146,7 +146,7 @@ output = immutably.array.splice(input, path, index, deleteCount[, ...insertList]
 **Arguments**
 
 * `input` *(any)* input data structure.
-* `path` *(string)* input data structure path to the array to pop a values from.
+* `path` *(string)* input data structure path to the array to splice.
 * `index` *(number)* index in the array of where to start removing and adding values.
 * `deleteCount` *(number)* number of how many values to remove from the array from the given index.
 * `insertList` *(array[any])* _(optional)_ list of values to insert to the array at the given index
@@ -177,7 +177,7 @@ output = immutably.array.map(input, path, mapper);
 **Arguments**
 
 * `input` *(any)* input data structure.
-* `path` *(string)* input data structure path to the array to pop a values from.
+* `path` *(string)* input data structure path to the array to map.
 * `mapper` *(function)* function that maps value from an array to a new value for the new array
 
 **Returns**
@@ -195,6 +195,36 @@ output; // {foo: {bar: {baz: ['ax', 'bx', 'cx']}}}
 
 You can find more examples in the test files.
 
+### `reduce`
+
+Reduces an array to a value with a function in the respective part of the input data structure.
+
+```
+output = immutably.array.reduce(input, path, reducer, seed);
+```
+
+**Arguments**
+
+* `input` *(any)* input data structure.
+* `path` *(string)* input data structure path to the array to reduce.
+* `reducer` *(function)* function that value by value reduces array to a value
+* `seed` *(any)* seed value for the array reduction
+
+**Returns**
+
+* `output` *(any)* output data structure with an array reduced a value on the given path.
+
+**Examples**
+
+Basic use:
+```
+const input = {foo: {bar: {baz: ['a', 'b', 'c']}}};
+const output = immutably.array.reduce(input, 'foo.bar.baz', (output, value) => output + value, '');
+output; // {foo: {bar: {baz: 'abc'}}}
+```
+
+You can find more examples in the test files.
+
 ### `move`
 
 Move a value from one index in an array to another in the respective part of the input data structure.
@@ -206,7 +236,7 @@ output = immutably.array.move(input, path, from, to);
 **Arguments**
 
 * `input` *(any)* input data structure.
-* `path` *(string)* input data structure path to the array to pop a values from.
+* `path` *(string)* input data structure path to the array to move values in.
 * `from` *(number|function)* index / function to find index in the array of an value that should be moved
 * `to` *(number|function)* index / function to find index in the array of where a value should be moved
 
@@ -276,7 +306,6 @@ You can find more examples in the test files.
 
 ## Roadmap
 
-* **reduce**
 * **replace**
 * **filter**
 * **reverse**
