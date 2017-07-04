@@ -7,7 +7,6 @@
   "repository": "https://github.com/ennovum/immutably-array",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "peerDependencies": {
       "immutably": "^1.3.0"
   },
