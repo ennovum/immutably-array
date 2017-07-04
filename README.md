@@ -289,6 +289,10 @@ You can find more examples in the test files.
 
 ## Changelog
 
+**1.3.2**
+
+* module configuration removed
+
 **1.3.1**
 
 * function expose bug fixed
